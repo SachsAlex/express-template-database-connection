@@ -27,11 +27,17 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:5050/v1/todos/all",
+          "raw": "http://localhost:5050/v1/todos/byid?todoId=1",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5050",
-          "path": ["v1", "todos", "all"]
+          "path": ["v1", "todos", "byid"],
+          "query": [
+            {
+              "key": "todoId",
+              "value": "1"
+            }
+          ]
         }
       },
       "response": []
@@ -63,11 +69,11 @@
     {
       "name": "Update-Todo",
       "request": {
-        "method": "POST",
+        "method": "PUT",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"newTask\": \"Milch kaufen\",\n    \"newIsDone\": true,\n    \"newDueDate\": \"2024-11-10\",\n    \"newUserId\": 1\n}",
+          "raw": "{\n    \"todoId\": 1,\n    \"newTask\": \"Trinken\",\n    \"newIsDone\": true,\n    \"newDueDate\": \"2025-10-10\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -75,11 +81,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:5050/v1/todos/create",
+          "raw": "http://localhost:5050/v1/todos/update",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5050",
-          "path": ["v1", "todos", "create"]
+          "path": ["v1", "todos", "update"]
         }
       },
       "response": []
@@ -87,11 +93,11 @@
     {
       "name": "Delete-Todo",
       "request": {
-        "method": "POST",
+        "method": "DELETE",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"newTask\": \"Milch kaufen\",\n    \"newIsDone\": true,\n    \"newDueDate\": \"2024-11-10\",\n    \"newUserId\": 1\n}",
+          "raw": "{\n\"todoId\":1\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -99,11 +105,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:5050/v1/todos/create",
+          "raw": "http://localhost:5050/v1/todos/delete",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5050",
-          "path": ["v1", "todos", "create"]
+          "path": ["v1", "todos", "delete"]
         }
       },
       "response": []

@@ -72,11 +72,16 @@ TodosRouter.get("/all", async (req, res) => {
 
 // PUT REQUESTS
 TodosRouter.put("/mark", async (req, res) => {
-  const { isDone } = req.body;
+  const { todoId, newIsDone } = req.body;
 
-  const todos = await TodoModel.findAll({ where: { isDone: true } });
+  await TodoModel.update(
+    {
+      isDone: newIsDone,
+    },
+    { where: { id: todoId } }
+  );
 
-  res.status(StatusCodes.OK).json({ markedTodos: todos });
+  res.status(StatusCodes.OK).json({ changedMark: todoId });
 });
 
 TodosRouter.put("/update", async (req, res) => {
